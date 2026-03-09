@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/sayaj.github.io/static/css/main.bf6db50d.css",
-    "main.js": "/sayaj.github.io/static/js/main.7b7bc660.js",
-    "static/js/453.2793d6bb.chunk.js": "/sayaj.github.io/static/js/453.2793d6bb.chunk.js",
-    "index.html": "/sayaj.github.io/index.html",
-    "main.bf6db50d.css.map": "/sayaj.github.io/static/css/main.bf6db50d.css.map",
-    "main.7b7bc660.js.map": "/sayaj.github.io/static/js/main.7b7bc660.js.map",
-    "453.2793d6bb.chunk.js.map": "/sayaj.github.io/static/js/453.2793d6bb.chunk.js.map"
+    "main.css": "/ToBRFVResearch_sayaj/static/css/main.bf6db50d.css",
+    "main.js": "/ToBRFVResearch_sayaj/static/js/main.e5b6d187.js",
+    "static/js/453.2793d6bb.chunk.js": "/ToBRFVResearch_sayaj/static/js/453.2793d6bb.chunk.js",
+    "index.html": "/ToBRFVResearch_sayaj/index.html",
+    "main.bf6db50d.css.map": "/ToBRFVResearch_sayaj/static/css/main.bf6db50d.css.map",
+    "main.e5b6d187.js.map": "/ToBRFVResearch_sayaj/static/js/main.e5b6d187.js.map",
+    "453.2793d6bb.chunk.js.map": "/ToBRFVResearch_sayaj/static/js/453.2793d6bb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bf6db50d.css",
-    "static/js/main.7b7bc660.js"
+    "static/js/main.e5b6d187.js"
   ]
 }
