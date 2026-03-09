@@ -2,7 +2,7 @@
   "name": "sayaj.github.io",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://biotecnologiamicrobianaunalmed.github.io/ToBRFVResearch_sayaj.github.io",
+  "homepage": "https://biotecnologiamicrobianaunalmed.github.io/ToBRFVResearch_sayaj",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
