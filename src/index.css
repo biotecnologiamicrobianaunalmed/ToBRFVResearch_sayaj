@@ -1,13 +1,90 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  /* Fondos azul noche / azul marino */
+  --c-bg: #0b1626;
+  --c-bg-alt: #0f1d31;
+  --c-surface: #132339;
+  --c-surface-2: #1a2e49;
+  --c-deep: #07111f;
+  /* Texto (todas las combinaciones sobre los fondos anteriores cumplen WCAG AA, >= 4,5:1) */
+  --c-ink: #eef3f9;
+  --c-ink-2: #c5d1e0;
+  --c-ink-3: #9fb1c9;
+  --c-line: #27405f;
+  /* Acentos verdes */
+  --c-green-900: #0f3d2e;
+  --c-green-700: #1f6f50;
+  --c-green-500: #3dae7e;
+  --c-green-400: #5cc496;
+  --c-green-300: #8fd8b4;
+  --c-green-100: rgba(61, 174, 126, 0.16);
+  /* Acentos rojo tomate */
+  --c-tomato: #e4573f;
+  --c-tomato-700: #c33a28;
+  --c-tomato-300: #ff9a8a;
+  --c-tomato-100: rgba(228, 87, 63, 0.18);
+  /* Pimentón / otros */
+  --c-pepper: #f2a541;
+  --c-pepper-300: #ffd089;
+  --c-pepper-100: rgba(242, 165, 65, 0.16);
+  --c-earth: #d9a066;
+  --c-teal: #3ec6dc;
+  --c-teal-100: rgba(62, 198, 220, 0.16);
+  --c-purple: #b48cff;
+  --radius: 14px;
+  --radius-sm: 8px;
+  --shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --maxw: 1180px;
+  --nav-h: 64px;
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color-scheme: dark;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 8px); }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--c-bg);
+  color: var(--c-ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img, video { max-width: 100%; display: block; }
+a { color: var(--c-green-300); }
+button { font-family: inherit; }
+h1, h2, h3, h4 { line-height: 1.2; margin: 0 0 0.6em; color: var(--c-ink); letter-spacing: -0.01em; }
+p { margin: 0 0 1em; }
+table { border-collapse: collapse; width: 100%; }
+
+/* Nombres científicos (ICTV): especie, género y familia en cursiva */
+i.sci { font-style: italic; }
+
+/* Párrafos justificados con separación silábica (requiere lang="es" en <html>) */
+.justificado,
+.prosa p, .seccion-lead, .tarjeta > p, .lista-numerada li, .lista-check li,
+.como-leer li, .mapa-fuentes li, .datos-lista li span, .pie p, .metodo p {
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  hyphenate-limit-chars: 6 3 3;
+}
+
+:focus-visible { outline: 3px solid var(--c-green-300); outline-offset: 2px; }
+
+@media (max-width: 600px) {
+  /* En celular las columnas son estrechas: alineación a la izquierda para evitar ríos de espacios */
+  .justificado,
+  .prosa p, .seccion-lead, .tarjeta > p, .lista-numerada li, .lista-check li,
+  .como-leer li, .mapa-fuentes li, .datos-lista li span, .pie p, .metodo p { text-align: left; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }

@@ -5,7 +5,7 @@
   <script src="https://cdn.jsdelivr.net/npm/molstar/build/viewer/molstar.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/molstar/build/viewer/molstar.css" />
   <style>
-    body { margin: 0; background: white; }
+    body { margin: 0; background: #07111f; }
     #app { width: 100vw; height: 100vh; }
   </style>
 </head>
@@ -19,6 +19,8 @@
       layoutShowLog: false,
       layoutShowLeftPanel: false
     }).then(viewer => {
+      // Fondo azul noche, coherente con el sitio (0x07111f).
+      try { viewer.plugin.canvas3d.setProps({ renderer: { backgroundColor: 0x07111f } }); } catch (e) { /* versión sin canvas3d listo */ }
       viewer.loadStructureFromUrl('./fold_2025_01_27_10_23_model_0.cif', 'mmcif');
     });
   </script>

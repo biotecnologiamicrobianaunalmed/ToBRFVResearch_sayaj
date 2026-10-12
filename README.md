@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# ToBRFV en Colombia · sitio web de la tesis
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Sitio complementario de la tesis **Epidemiología molecular del *Tobamovirus fructirugosum* (ToBRFV) en cultivos de tomate (*Solanum lycopersicum*) y pimentón (*Capsicum annuum*) en Colombia** (Juliana Sánchez Yalí, Maestría en Ciencias – Biotecnología, Universidad Nacional de Colombia, Sede Medellín, 2026).
 
-## Available Scripts
+Publicado en GitHub Pages: <https://biotecnologiamicrobianaunalmed.github.io/ToBRFVResearch_sayaj/>
 
-In the project directory, you can run:
+## Qué contiene
 
-### `npm start`
+- **Mapa interactivo** (Leaflet): distribución mundial del ToBRFV con dos capas diferenciadas, secuencias depositadas en NCBI Virus (`public/data.tsv`) y reportes oficiales de la EPPO (`src/data/eppo_reportes_pendiente_verificacion.json`), más las detecciones de la tesis en Colombia y Antioquia (`src/data/sitios.js`).
+- **Redes de transmisión** (sigma.js + graphology sobre WebGL, con fondo de mapa): redes de Colombia (14.053 veredas, 302.337 aristas) y Antioquia (2.105 veredas, 37.681 aristas), con búsqueda, filtros, resaltado de vecinos, leyendas y explicación de lectura.
+- Secciones de introducción, metodología, resultados (detección, distribución nacional, síntomas y Ct, riesgo cruzado, genómica con visor Mol*, RT-LAMP), discusión, conclusiones y datos.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Todo el texto visible está en `src/content/es.js` para facilitar un futuro selector de idioma.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Desarrollo
 
-### `npm test`
+```bash
+npm install
+npm start        # servidor local en http://localhost:3000
+npm run build    # compila en build/
+npm run deploy   # publica build/ en la rama gh-pages
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Datos de las redes
 
-### `npm run build`
+Las redes originales (NetworkX, formato GEXF) están en `public/` y se ofrecen como descarga. Para la visualización se usan versiones compactas en `public/data/`, generadas con:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+python3 scripts/build_network_data.py
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+El script convierte posiciones Web Mercator a latitud/longitud, codifica los atributos de nodo (`cultivation_region`, `tomate`, `tomate_inv`, `pimenton`, `pagerank`, `betweenness`, `louvain`, `pr_antioquia`, `bc_antioquia`) y ordena las aristas por peso para poder filtrarlas por umbral. También genera `public/data/municipios.json` con centroides municipales derivados de las veredas.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Datos que requieren verificación antes de publicar
 
-### `npm run eject`
+Ver `PENDIENTES_VERIFICACION.md`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Estructura
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+public/            archivos estáticos (GEXF, data.tsv, modelo .cif, visor Mol*, video, imágenes)
+public/data/       redes en JSON compacto y centroides municipales (generados)
+scripts/           preprocesamiento de datos
+src/content/es.js  textos del sitio
+src/data/          datos de la tesis, lista EPPO, coordenadas de países, colores por departamento
+src/components/    Navbar, Hero, MapaDistribucion, Secciones, RedesTransmision, Footer
+src/lib/redes.js   carga y construcción del grafo, escalas de color
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+La carpeta `Tesis/` (PDF) está excluida del repositorio mediante `.gitignore`.

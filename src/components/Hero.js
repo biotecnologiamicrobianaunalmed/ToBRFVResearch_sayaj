@@ -1,87 +1,60 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Hero.css';
+import T from '../lib/cientifico';
 
-function Hero() {
+const irA = (id) => (e) => {
+  e.preventDefault();
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
 
-  const handleExploreClick = () => {
-    const abstractSection = document.querySelector('.abstract-section');
-    if (abstractSection) {
-      abstractSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+function Hero({ t }) {
+  // El video solo se carga en pantallas grandes y sin preferencia de movimiento reducido;
+  // en celular se usa la imagen estática (hero-poster.jpg).
+  const [conVideo, setConVideo] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px) and (prefers-reduced-motion: no-preference)');
+    const actualizar = () => setConVideo(mq.matches);
+    actualizar();
+    mq.addEventListener('change', actualizar);
+    return () => mq.removeEventListener('change', actualizar);
+  }, []);
+
+  const poster = `${process.env.PUBLIC_URL}/hero-poster.jpg`;
+  const h = t.hero;
 
   return (
-    <section className="hero-section">
-
-      {/* 🎥 Background Video */}
-      <video
-        className="hero-video"
-        autoPlay
-        muted
-        loop
-        playsInline
-      >
-        <source src={`${process.env.PUBLIC_URL}/hero-video.mp4`} type="video/mp4" />
-      </video>
-
-      {/* Dark Overlay for readability */}
-      <div className="video-overlay"></div>
-
-      {/* Hero Content */}
-      <div className="hero-content">
-        
-        <div className="virus-badge">
-          <span className="virus-icon">🦠</span>
-          <span className="virus-text">ToBRFV Research</span>
+    <section id="inicio" className="hero">
+      {conVideo ? (
+        <video className="hero-fondo" autoPlay muted loop playsInline poster={poster} preload="metadata">
+          <source src={`${process.env.PUBLIC_URL}/hero-video.mp4`} type="video/mp4" />
+        </video>
+      ) : (
+        <img className="hero-fondo" src={poster} alt="" />
+      )}
+      <div className="hero-velo" />
+      <div className="hero-contenido">
+        <span className="hero-badge"><T>{h.badge}</T></span>
+        <h1 className="hero-titulo"><T>{h.titulo}</T></h1>
+        <p className="hero-subtitulo"><T>{h.subtitulo}</T></p>
+        <div className="hero-autor">
+          <strong>{h.autor}</strong>
+          <span>{h.programa}</span>
+          <span>{h.afiliacion}</span>
+          <span className="hero-directores">{h.directores}</span>
         </div>
-        
-        <h1 className="hero-title">
-          Tomato Brown Rugose Fruit Virus
-          <span className="title-highlight">(ToBRFV)</span>
-        </h1>
-        
-        <p className="hero-subtitle">
-          Distribution, transmission and protein interactions in tomato and pepper
-        </p>
-
-        <div className="hero-stats">
-          <div className="stat-item">
-            <div className="stat-icon">🎯</div>
-            <div className="stat-number">19/20</div>
-            <div className="stat-label">Positive Fields</div>
-          </div>
-          <div className="stat-divider"></div>
-          <div className="stat-item">
-            <div className="stat-icon">📍</div>
-            <div className="stat-number">8</div>
-            <div className="stat-label">Municipalities</div>
-          </div>
-          <div className="stat-divider"></div>
-          <div className="stat-item">
-            <div className="stat-icon">🧬</div>
-            <div className="stat-number">99.9%</div>
-            <div className="stat-label">Nucleotide Identity</div>
-          </div>
+        <div className="hero-acciones">
+          <a href="#mapa" className="boton boton--primario" onClick={irA('mapa')}>{h.cta1}</a>
+          <a href="#redes" className="boton boton--secundario" onClick={irA('redes')}>{h.cta2}</a>
         </div>
-
-        <button className="hero-cta" onClick={handleExploreClick}>
-          <span>Explore Results</span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-
-        <div className="scroll-indicator">
-          <div className="mouse">
-            <div className="wheel"></div>
-          </div>
-          <p className="scroll-text">Scroll to explore</p>
-        </div>
-
+        <ul className="hero-stats">
+          {h.stats.map((s) => (
+            <li key={s.label}><strong>{s.valor}</strong><span>{s.label}</span></li>
+          ))}
+        </ul>
       </div>
     </section>
   );
 }
 
 export default Hero;
-

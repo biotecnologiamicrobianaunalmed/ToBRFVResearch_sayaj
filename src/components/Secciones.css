@@ -1,0 +1,39 @@
+/* Metodología */
+.metodo { display: flex; gap: 16px; }
+.metodo-icono { flex: 0 0 46px; width: 46px; height: 46px; border-radius: 12px; background: var(--c-green-100); color: var(--c-green-300); display: grid; place-items: center; }
+.metodo-icono svg { width: 24px; height: 24px; }
+
+/* Resultados */
+.resultado { margin-bottom: 56px; }
+.resultado:last-child { margin-bottom: 0; }
+.resultado-cabecera { display: flex; align-items: baseline; gap: 14px; margin-bottom: 14px; }
+.resultado-num { font-size: 0.8rem; font-weight: 800; color: var(--c-tomato-300); letter-spacing: 0.1em; }
+.resultado-titulo { font-size: 1.45rem; font-weight: 800; margin: 0; }
+.resultado-rejilla { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: start; }
+
+.hospedante { border-top: 5px solid var(--c-tomato); }
+.hospedante--pimenton { border-top-color: var(--c-pepper); }
+.hospedante-imagen { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: 14px; }
+.hospedante h3 { font-size: 1.1rem; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.hospedante .tabla-envoltura { margin-top: 14px; }
+
+.visor-proteina { background: var(--c-surface); border: 1px solid var(--c-line); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); height: 560px; }
+.visor-proteina iframe { width: 100%; height: 100%; border: 0; background: var(--c-deep); }
+
+.genomica-fondo { position: relative; }
+.genomica-fondo canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.45; pointer-events: none; }
+.genomica-contenido { position: relative; z-index: 1; }
+
+.recomendaciones { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+
+.datos-lista { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.datos-lista li { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--c-line); font-size: 0.95rem; color: var(--c-ink-2); }
+.datos-lista li:last-child { border-bottom: 0; }
+.datos-lista li > span:last-child { flex: 1 1 240px; }
+.datos-lista strong { color: var(--c-ink); }
+.datos-lista code { font-size: 0.86rem; background: var(--c-surface-2); color: var(--c-green-300); padding: 2px 6px; border-radius: 6px; }
+
+@media (max-width: 960px) {
+  .resultado-rejilla, .recomendaciones { grid-template-columns: 1fr; }
+  .visor-proteina { height: 440px; }
+}

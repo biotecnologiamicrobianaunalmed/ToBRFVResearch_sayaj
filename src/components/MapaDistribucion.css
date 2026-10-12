@@ -1,0 +1,45 @@
+.mapa-marco { background: var(--c-surface); border: 1px solid var(--c-line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+.mapa-barra { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--c-line); background: var(--c-surface-2); }
+.segmentado { display: inline-flex; background: var(--c-surface); border: 1px solid var(--c-line); border-radius: 999px; padding: 3px; }
+.segmentado button { border: 0; background: transparent; padding: 7px 16px; border-radius: 999px; font-weight: 600; font-size: 0.88rem; color: var(--c-ink-2); cursor: pointer; }
+.segmentado button.activo { background: var(--c-green-700); color: #fff; }
+.capas { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.86rem; }
+.capas label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; color: var(--c-ink-2); }
+.capas input { accent-color: var(--c-green-500); }
+.mapa-lienzo { height: 560px; position: relative; }
+.mapa-lienzo .leaflet-container { height: 100%; width: 100%; background: #1c1f24; font-family: var(--font); }
+.mapa-ayuda { position: absolute; z-index: 500; left: 12px; bottom: 12px; background: rgba(19, 35, 57, 0.95); border: 1px solid var(--c-line); border-radius: 10px; padding: 8px 12px; font-size: 0.8rem; color: var(--c-ink-2); max-width: 300px; box-shadow: var(--shadow-sm); }
+.mapa-leyenda { display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 12px 16px; border-top: 1px solid var(--c-line); font-size: 0.84rem; color: var(--c-ink-2); background: var(--c-surface); }
+.mapa-leyenda span { display: inline-flex; align-items: center; gap: 7px; }
+.ley-icono { width: 14px; height: 14px; border-radius: 50%; display: inline-block; flex: none; }
+.ley-ncbi { background: var(--c-teal); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--c-teal); }
+.ley-eppo { border: 2.5px dashed var(--c-pepper); background: transparent; }
+.ley-tomate { background: var(--c-tomato); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--c-tomato); }
+.ley-neg { background: #fff; border: 2.5px solid var(--c-tomato); }
+.ley-pim { background: transparent; border: 3px solid var(--c-pepper); }
+.ley-riesgo { background: rgba(228, 87, 63, 0.22); border: 1px solid rgba(228, 87, 63, 0.6); }
+.mapa-fuentes { margin-top: 14px; font-size: 0.85rem; color: var(--c-ink-3); }
+.mapa-fuentes summary { cursor: pointer; font-weight: 600; color: var(--c-ink-2); }
+.mapa-fuentes ul { margin: 8px 0 0; padding-left: 18px; }
+
+/* Leaflet: controles, popups y etiquetas en tema oscuro */
+.leaflet-container a { color: var(--c-green-300); }
+.leaflet-bar a, .leaflet-bar a:hover { background: var(--c-surface); color: var(--c-ink); border-bottom-color: var(--c-line); }
+.leaflet-bar a.leaflet-disabled { background: var(--c-surface-2); color: var(--c-ink-3); }
+.leaflet-touch .leaflet-bar { border-color: var(--c-line); }
+.leaflet-control-attribution { background: rgba(11, 22, 38, 0.8) !important; color: var(--c-ink-3) !important; }
+.leaflet-control-attribution a { color: var(--c-ink-2) !important; }
+.popup h4 { margin: 0 0 6px; font-size: 0.98rem; color: var(--c-ink); }
+.popup h4 small { color: var(--c-ink-3); font-weight: 500; }
+.popup p { margin: 0 0 4px; font-size: 0.85rem; color: var(--c-ink-2); }
+.popup .chip { margin-right: 4px; }
+.leaflet-popup-content { margin: 12px 14px; color: var(--c-ink-2); }
+.leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--c-surface); color: var(--c-ink); box-shadow: var(--shadow); }
+.leaflet-popup-content-wrapper { border-radius: 10px; border: 1px solid var(--c-line); }
+.leaflet-container a.leaflet-popup-close-button { color: var(--c-ink-3); }
+.leaflet-tooltip { background: var(--c-surface); color: var(--c-ink); border: 1px solid var(--c-line); box-shadow: var(--shadow-sm); }
+.leaflet-tooltip-top::before { border-top-color: var(--c-line); }
+.leaflet-tooltip-right::before { border-right-color: var(--c-line); }
+.etiqueta-mapa { background: rgba(11, 22, 38, 0.88); border: 1px solid var(--c-line); border-radius: 6px; padding: 2px 6px; font-size: 11px; font-weight: 600; color: var(--c-ink); box-shadow: none; }
+.etiqueta-mapa::before { display: none; }
+@media (max-width: 760px) { .mapa-lienzo { height: 440px; } .mapa-ayuda { display: none; } }
