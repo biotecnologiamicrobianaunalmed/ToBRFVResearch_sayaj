@@ -3,6 +3,7 @@
 .hero-velo { position: absolute; inset: 0; z-index: 1; background: linear-gradient(160deg, rgba(7, 17, 31, 0.86) 0%, rgba(11, 22, 38, 0.74) 50%, rgba(7, 17, 31, 0.9) 100%); }
 .hero-contenido { position: relative; z-index: 2; max-width: 980px; text-align: center; color: #fff; animation: hero-entrada 0.9s ease-out both; }
 .hero-badge { display: inline-block; padding: 8px 18px; border-radius: 999px; border: 1px solid rgba(143, 216, 180, 0.45); background: rgba(61, 174, 126, 0.14); color: var(--c-green-300); backdrop-filter: blur(8px); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 26px; }
+.hero-badge i.sci { text-transform: none; }
 .hero-titulo { font-size: clamp(2rem, 5vw, 3.6rem); font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-bottom: 18px; text-wrap: balance; }
 .hero-subtitulo { font-size: clamp(1rem, 1.6vw, 1.2rem); color: rgba(255, 255, 255, 0.9); max-width: 780px; margin: 0 auto 26px; }
 .hero-autor { display: flex; flex-direction: column; gap: 2px; font-size: 0.95rem; color: rgba(255, 255, 255, 0.88); margin-bottom: 30px; }
